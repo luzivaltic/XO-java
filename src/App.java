@@ -45,16 +45,20 @@ public class App {
             boolean validInput = false;
             int cur_row , cur_col;
             turn_count++;
+
             do {
                 cur_row = scanner.nextInt() - 1;
                 cur_col = scanner.nextInt() - 1;
                 if( curBoard.changeCell(cur_row, cur_col, players[cur_player]) ){
-                    validInput = true;   
+                    validInput = true;
+                }
+                else {
+                    System.out.println("Invalid move!");   
                 }
             }
             while( !validInput );
-
             curBoard.printBoard();
+
             if( is_win(players[cur_player]) ) {
                 System.out.println(players[cur_player] + " won!");   
                 playing = false;
